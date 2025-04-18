@@ -64,8 +64,43 @@ class MergeSort:
                 j += 1
                 k += 1
 
+# my_array = [2, 3, 5, 1, 7, 4, 4, 4, 2, 6, 0]
+# print("\n\nMerge Sort\nUnsorted array:\t", my_array)
+# sorter = MergeSort()
+# sorter.mergeSort(my_array)
+# print("Sorted array:\t", my_array)
+
+def countSort(arr):
+    n = len(arr)
+    maxx = max(arr)
+    frequencyArray = [0] * (maxx + 1)
+
+    for x in arr:
+        frequencyArray[x] += 1
+
+    i = 0
+    for c in range(maxx + 1):
+        while frequencyArray[c] > 0:
+            arr[i] = c
+            frequencyArray[c] -= 1
+            i += 1
+            
+    return arr
+
+
 my_array = [2, 3, 5, 1, 7, 4, 4, 4, 2, 6, 0]
-print("\n\nMerge Sort\nUnsorted array:\t", my_array)
-sorter = MergeSort()
-sorter.mergeSort(my_array)
-print("Sorted array:\t", my_array)
+print("\n\nCount Sort\nUnsorted array:\t", my_array)
+print("Sorted array:\t", countSort(my_array))
+
+
+
+def radixSort(arr):
+    radixArray = [[] * (len(arr) + 1)]
+    maxVal = max(arr)
+    exp = 1
+
+    while maxVal // exp > 0:
+        while len(arr) > 0:
+            val = arr.pop()
+            radixIndex = (val // exp) % 10
+            # radixA

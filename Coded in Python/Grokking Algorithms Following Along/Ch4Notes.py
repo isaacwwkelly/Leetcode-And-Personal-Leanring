@@ -37,7 +37,7 @@ def maximumInList(l: list[int]) -> int:
 # print("\n4.3: (Recursive) maximumInList([1, 2, 3, 4, 5]): ", maximumInList([1, 2, 3, 4, 5]))
 
 
-# 4.4
+# 4.4 Recursive binary search
 def binarySearch(arr, target):
     if len(arr) == 1 and arr[0] != target:
         return None
@@ -75,6 +75,8 @@ def splitPlot(dimensions: list[int]) -> list[int]:
 
 
 # Quick Sort
+# Worst case time complexity: O(n^2)
+# Average case time complexity: O(n log n)
 def quickSort(l: list[int]) -> list[int]:
     if len(l) < 2:
         return l
@@ -83,9 +85,9 @@ def quickSort(l: list[int]) -> list[int]:
         pivotIndex = len(l) // 2
         pivot = l[pivotIndex]
 
-        l.pop(pivotIndex) # I am removing the pivot from the list so it's not included in the recursion. Alternatively, we could set the pivot to the last or first element of the list
+        l.pop(pivotIndex) # I am removing the pivot from the list so it's not included in the recursion. Alternatively, we could set the pivot to the last or first element of the list. We could also set the pivot to a random element of the list
 
-        left = [x for x in l if x <= pivot] # If we did the alternative, we could exclude the pivot from the left and right lists
+        left = [x for x in l if x <= pivot] # If we did an alternative, we could exclude the pivot from the left and right lists
         right = [x for x in l if x > pivot] # for example, if set the pivot to the first element of the list, right would = [x for x in l[1:] if x < pivot], so that the pivot would not be included
 
         return quickSort(left) + [pivot] + quickSort(right)
